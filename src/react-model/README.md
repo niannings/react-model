@@ -1,5 +1,9 @@
 # react-model
 
+## Preview
+
+[codeSandbox](https://codesandbox.io/embed/lucid-ritchie-j85hn?fontsize=14&hidenavigation=1&theme=dark)
+
 ## Install
 
 ```shell

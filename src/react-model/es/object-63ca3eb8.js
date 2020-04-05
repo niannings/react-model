@@ -1,2 +1,0 @@
-/*! @wlxm/react-model - v0.1.1 - 4/5/2020 https://niannings.github.io */
-import{a as n}from"./useStates-c81ffa19.js";var r=function(n){return n.replace(/\[([^\[\]]*)\]/g,".$1.").split(".").filter((function(n){return""!==n}))},t=function(t){for(var e=[],u=1;u<arguments.length;u++)e[u-1]=arguments[u];return n(e).map((function(n){return r(n).reduce((function(n,r){return null==n?void 0:n[r]}),t)}))};function e(n,t,e){var u=r(t),f=u.length-1;u.reduce((function(n,r,t){return t===f?(n[r]=e,n):(n[r]||(/^\d+$/.test(u[t+1])?n[r]=[]:n[r]={}),n[r])}),n)}export{t as g,e as s};

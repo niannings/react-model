@@ -12,3 +12,4 @@ declare module 'react' {
 export { default as useBothWayBinding } from './useBothWayBinding';
 export { default as useModel } from './useModel';
 export { default as withModel } from './withModel';
+export { withClassModel } from './withModel';

@@ -6,10 +6,7 @@ import { setValue } from '../../utils/object';
 
 export const STORE = new Map();
 
-export interface IModelUser<M = any> {
-    [0]: M;
-    [1]: React.Dispatch<any>;
-};
+export type IModelUser<M = any> = [M, React.Dispatch<any>];
 
 function useModel<M = any>(initialModel: M = {} as any): IModelUser<M> {
     const ref = <></>;
@@ -25,7 +22,7 @@ function useModel<M = any>(initialModel: M = {} as any): IModelUser<M> {
             }
         },
         // eslint-disable-next-line
-    []
+        []
     );
 
     const setModel = useCallback(data => {
@@ -33,7 +30,7 @@ function useModel<M = any>(initialModel: M = {} as any): IModelUser<M> {
         setValue(model, path, data[path]);
         findedSetModel ? findedSetModel(model) : _setModel(model);
         // eslint-disable-next-line
-  }, []);
+    }, []);
 
     if (!findedModel) STORE.set(modelId, [model, setModel]);
 
