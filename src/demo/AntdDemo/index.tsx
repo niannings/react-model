@@ -38,8 +38,8 @@ import {
   useBothWayBinding,
   useModel,
   withModel,
-} from "../../react-model/packages/both-way-binding";
-import useModelValidator from "../../react-model/packages/model-validator";
+} from "../../react-model/packages/both-way-binding/both-way-binding";
+import useModelValidator from "../../react-model/packages/model-validator/useModelValidator";
 
 const { Item: FormItem } = Form;
 const { Option: MentionsOption } = Mentions;

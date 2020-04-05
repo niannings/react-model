@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { useBothWayBinding } from "../../react-model/packages/both-way-binding";
+import { useBothWayBinding } from "../../react-model/packages/both-way-binding/both-way-binding";
 import { withClassModel } from "../../react-model/packages/both-way-binding/withModel";
 import { IModelUser } from "../../react-model/packages/both-way-binding/useModel";
 

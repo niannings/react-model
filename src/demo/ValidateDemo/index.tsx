@@ -4,8 +4,8 @@ import {
   useBothWayBinding,
   useModel,
   withModel,
-} from "../../react-model/packages/both-way-binding";
-import useModelValidator from "../../react-model/packages/model-validator";
+} from "../../react-model/packages/both-way-binding/both-way-binding";
+import useModelValidator from "../../react-model/packages/model-validator/useModelValidator";
 import { validators } from "./config";
 import { classlist } from "../../react-model/utils/dom";
 
