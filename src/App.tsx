@@ -1,11 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import {
-  withModel,
-  useBothWayBinding,
-  useModel,
-} from "./react-model/packages/both-way-binding/both-way-binding";
+import { withModel, useBothWayBinding, useModel } from "@wlxm/react-model";
 import AntdDemo from "./demo/AntdDemo";
 import ValidateDemo from "./demo/ValidateDemo";
 import ClassComponentDemo from "./demo/ClassConponentDemo";
