@@ -145,3 +145,44 @@ function App() {
 
 export default withModel(App);
 ```
+
+## Can get the model of the parent component
+
+```jsx
+import React from "react";
+import {
+  useModel,
+  TwoWayBingding,
+  withModel,
+  withClassModel
+} from "@wlxm/react-model";
+
+function Child {
+  const [model] = useModel(); // The model here is the parent component's
+  return (
+    <div>
+      <TowWayBinding>
+        <label>年龄：</label>
+        <input _modelname="age" _byevent="true" />
+      </TowWayBinding>
+    </div>
+  )
+}
+
+class Parent extends Component {
+  render() {
+    return (
+      <div>
+        <TowWayBinding>
+          <label>姓名：</label>
+          <input _modelname="name" _byevent="true" />
+        </TowWayBinding>
+        {/* This child will inherit the model of the parent component */}
+        <Child />
+      </div>
+    )
+  }
+}
+
+export default withClassModel(Parent);
+```
