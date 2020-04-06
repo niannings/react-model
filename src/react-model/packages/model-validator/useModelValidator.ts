@@ -1,10 +1,12 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useStates } from '../hooks/useStates';
 import { get } from '../../utils/object';
-// import './style.css';
+import { debounce } from '../../utils/fn';
+import './style.css';
 
 function useModelValidator([model, setModel], config = {}) {
     const [error, setError] = useStates({});
+    const didMountRef = useRef(false);
     const keys = Object.keys(config);
     let i = keys.length;
 
@@ -15,17 +17,22 @@ function useModelValidator([model, setModel], config = {}) {
             key,
             validators: config[key],
             setError,
-            setModel
+            setModel,
+            didMount: didMountRef.current
         });
     }
+
+    useEffect(() => {
+        didMountRef.current = true;
+    }, []);
 
     return error;
 }
 
 export default useModelValidator;
 
-function Validator({ value, key, validators = [], setError, setModel }) {
-    useEffect(() => {
+const validate = debounce(
+    ({ value, key, validators = [], setError, setModel }) => {
         let j = -1;
         const len = validators.length;
         while (++j < len) {
@@ -40,8 +47,24 @@ function Validator({ value, key, validators = [], setError, setModel }) {
             }
         }
         if (j === len) setError({ [key]: undefined });
-        // eslint-disable-next-line
-  }, [value]);
+    },
+    66
+);
 
-    return null;
+function Validator({
+    value,
+    key,
+    validators = [],
+    setError,
+    setModel,
+    didMount
+}) {
+    useEffect(
+        () => {
+            if (didMount)
+                validate({ value, key, validators, setError, setModel });
+        },
+        // eslint-disable-next-line
+        [value]
+    );
 }

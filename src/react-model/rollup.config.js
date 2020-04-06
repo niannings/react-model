@@ -24,7 +24,7 @@ const plugins = [
         throwOnError: true,
         throwOnWarning: true,
         include: ['packages/**'],
-        exclude: ['node_modules/**']
+        exclude: ['node_modules/**', '**/*.css']
     }),
     typescript(),
     babel({
@@ -32,7 +32,8 @@ const plugins = [
         exclude: 'node_modules/**'
     }),
     postcss({
-        plugins: []
+        // extract: true,
+        // minimize: true
     })
 ];
 
@@ -43,6 +44,7 @@ export default [
             dir: 'lib',
             format: 'umd',
             name: 'reactModel',
+            assetFileNames: 'lib/[name].[ext]',
             plugins: [
                 commonTerser
             ]
@@ -59,11 +61,13 @@ export default [
         output: [
             {
                 dir: 'dist',
-                format: 'es'
+                format: 'es',
+                assetFileNames: 'dist/[name].[ext]',
             },
             {
                 dir: 'es',
                 format: 'es',
+                assetFileNames: 'es/[name].[ext]',
                 plugins: [commonTerser]
             }
         ],

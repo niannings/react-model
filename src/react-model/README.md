@@ -41,7 +41,6 @@ export default withModel(App);
 ```jsx
 import React from 'react';
 import { useModel, useBothWayBinding, withModel, useModelValidator } from '@wlxm/react-model';
-import '@wlxm/react-model/packages/model-validator/style.css';
 
 function App() {
     const [model, setModel] = useModel({ name: '小明' });
