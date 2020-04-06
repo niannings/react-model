@@ -23,6 +23,6 @@ export function withClassModel(TheComponent) {
 }
 
 function ModelComponent({ TheComponent, ...rest }) {
-    const MODEL = useModel();
-    return <TheComponent {...rest} MODEL={MODEL} />;
+    const [model, setModel] = useModel();
+    return <TheComponent {...rest} {...{ model, setModel }} />;
 }

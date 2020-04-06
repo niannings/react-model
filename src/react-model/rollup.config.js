@@ -54,7 +54,7 @@ export default [
     {
         input: [
             'packages/index.ts',
-            'packages/both-way-binding/both-way-binding.ts',
+            'packages/two-way-binding/two-way-binding.ts',
             'packages/hooks/useStates.ts',
             'packages/model-validator/useModelValidator.ts'
         ],

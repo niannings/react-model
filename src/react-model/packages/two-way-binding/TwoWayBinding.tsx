@@ -1,15 +1,21 @@
 import { Children, cloneElement, useMemo, useRef } from 'react';
 import { get } from '../../utils/object';
-import { STORE } from './useModel';
-import { findModelId } from './utils';
+import useModel from './useModel';
 
-function useBothWayBinding(jsxEl: JSX.Element) {
-    const modelId = findModelId(jsxEl);
-    const [model, setModel] = STORE.get(modelId);
-    return DFSMap(jsxEl, model, setModel);
+function TwoWayBinding({ children }) {
+    const [model, setModel] = useModel();
+    return DFSMap(children, model, setModel);
 }
 
-export default useBothWayBinding;
+function Item({ children, rModel }) {
+    if (Array.isArray(children)) throw new Error('TwoWayBinding.Item component only accepts one child.');
+    const [model, setModel] = useModel();
+    return BindProps({ jsxEl: children, model, setModel, modelName: rModel });
+}
+
+TwoWayBinding.Item = Item;
+
+export default TwoWayBinding;
 
 function DFSMap(jsxEl, model, setModel) {
     if (!jsxEl) return jsxEl;
@@ -49,8 +55,6 @@ function BindProps({ jsxEl, model, setModel, modelName }) {
         });
     });
 
-    _deps.length && console.log(dependencies);
-
     return useMemo(
         () =>
             cloneElement(jsxEl, {
@@ -62,6 +66,6 @@ function BindProps({ jsxEl, model, setModel, modelName }) {
                 [_event]: handlerRef.current
             }),
         // eslint-disable-next-line
-    dependencies
+        dependencies
     );
 }

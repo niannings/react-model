@@ -7,5 +7,5 @@ export function findModelId(ref) {
         if (modelId) return modelId;
         cur = cur.return;
     }
-    throw new Error('useModel只能在withModel高阶组件下使用～');
+    throw new Error('useModel can only be used under HOC of withModel or withClassModel.');
 }
