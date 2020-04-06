@@ -70,32 +70,40 @@ export default withModel(App);
 
 ```jsx
 import React from 'react';
-import { useModel, TwoWayBingding, withModel, withClassModel } from '@wlxm/react-model';
+import {
+    useModel,
+    TwoWayBingding,
+    withModel,
+    withClassModel
+} from '@wlxm/react-model';
 
 const { Item: TowWayBindingItem } = TowWayBinding;
 
 class ClassComponentDemo extends Component {
-    useEffect(() => {
+    componentDidMount() {
         this.props.setModel({
-            'msg': 'welcome'
-        })
-    }, []);
+            msg: 'welcome'
+        });
+    }
 
-  render() {
-    return (
-      <div>
-        <TowWayBinding>
-          <label>姓名：</label>
-          <input _modelname="name" _byevent="true" />
-          <label>年龄：</label>
-          <input _modelname="age" _byevent="true" />
-        </TowWayBinding>
-        <pre className="code-wrap">
-          <code className="code">{JSON.stringify(this.props.model, null, 2)}</code>
-        </pre>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div>
+                <p>{this.props.model.msg}</p>
+                <TowWayBinding>
+                    <label>姓名：</label>
+                    <input _modelname="name" _byevent="true" />
+                    <label>年龄：</label>
+                    <input _modelname="age" _byevent="true" />
+                </TowWayBinding>
+                <pre className="code-wrap">
+                    <code className="code">
+                        {JSON.stringify(this.props.model, null, 2)}
+                    </code>
+                </pre>
+            </div>
+        );
+    }
 }
 
 export default withClassModel(ClassComponentDemo);

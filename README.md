@@ -69,21 +69,27 @@ export default withModel(App);
 ### use class component
 
 ```jsx
-import React from 'react';
-import { useModel, TwoWayBingding, withModel, withClassModel } from '@wlxm/react-model';
+import React from "react";
+import {
+  useModel,
+  TwoWayBingding,
+  withModel,
+  withClassModel,
+} from "@wlxm/react-model";
 
 const { Item: TowWayBindingItem } = TowWayBinding;
 
 class ClassComponentDemo extends Component {
-    useEffect(() => {
-        this.props.setModel({
-            'msg': 'welcome'
-        })
-    }, []);
+  componentDidMount() {
+    this.props.setModel({
+      msg: "welcome",
+    });
+  }
 
   render() {
     return (
       <div>
+        <p>{this.props.model.msg}</p>
         <TowWayBinding>
           <label>姓名：</label>
           <input _modelname="name" _byevent="true" />
@@ -91,7 +97,9 @@ class ClassComponentDemo extends Component {
           <input _modelname="age" _byevent="true" />
         </TowWayBinding>
         <pre className="code-wrap">
-          <code className="code">{JSON.stringify(this.props.model, null, 2)}</code>
+          <code className="code">
+            {JSON.stringify(this.props.model, null, 2)}
+          </code>
         </pre>
       </div>
     );
